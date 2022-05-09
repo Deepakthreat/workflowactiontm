@@ -35,7 +35,7 @@ jobs:
 
     - name: .NET code metrics
       id: dotnet-code-metrics
-      uses: ./workflowactiontm/action/DotNet.GitHubAction@main
+      uses: workflowactiontm/action/DotNet.GitHubAction@main
       env:
         GREETINGS: 'Hello, .NET developers!' # ${{ secrets.GITHUB_TOKEN }}
       with:
