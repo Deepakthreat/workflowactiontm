@@ -33,7 +33,7 @@ jobs:
 
     - name: .NET code metrics
       id: dotnet-code-metrics
-      uses: ${{ env.superPath }}/actions/DotNet.GitHubAction@main
+      uses: ${{ superPath }}/actions/DotNet.GitHubAction@main
       env:
         GREETINGS: 'Hello, .NET developers!' # ${{ secrets.GITHUB_TOKEN }}
       with:
