@@ -21,7 +21,7 @@ jobs:
         contents: write
         pull-requests: write
     env:
-      superPath: workflowactiontm/actions
+      superPath: 'workflowactiontm'
 
     steps:
     - uses: actions/checkout@master
@@ -33,7 +33,7 @@ jobs:
 
     - name: .NET code metrics
       id: dotnet-code-metrics
-      uses: ${{ env.superPath }}/DotNet.GitHubAction@main
+      uses: ${{ env.superPath }}/actions/DotNet.GitHubAction@main
       env:
         GREETINGS: 'Hello, .NET developers!' # ${{ secrets.GITHUB_TOKEN }}
       with:
