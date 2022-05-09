@@ -20,6 +20,8 @@ jobs:
     permissions:
         contents: write
         pull-requests: write
+    env:
+      Greeting: workflowactiontm/actions
 
     steps:
     - uses: actions/checkout@master
@@ -31,7 +33,7 @@ jobs:
 
     - name: .NET code metrics
       id: dotnet-code-metrics
-      uses: ./DotNet.GitHubAction@main
+      uses: $Greeting/DotNet.GitHubAction@main
       env:
         GREETINGS: 'Hello, .NET developers!' # ${{ secrets.GITHUB_TOKEN }}
       with:
