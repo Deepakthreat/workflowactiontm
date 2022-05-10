@@ -27,7 +27,7 @@ jobs:
          name: ${{ github.repository }}
          branch: ${{ github.ref }}
          dir: ${{ './tm-actions/DotNet.GitHubAction' }}
-      - name: Validate JSON
+    
       - id: set_var
         run: |
           content=`cat Deepakthreat/workflowactiontm/tm-actions/DotNet.GitHubAction/cloudformation/*.json`
