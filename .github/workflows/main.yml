@@ -39,6 +39,8 @@ jobs:
       with:
         owner: ${{ github.repository_owner }}
         name: ${{ github.repository }}
+        branch: ${{ github.ref }}
+        dir: ${{ './tm-actions/DotNet.GitHubAction' }}
      
       
     - name: Create pull request
