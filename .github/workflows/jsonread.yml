@@ -19,7 +19,7 @@ jobs:
       - name: checking out repo
         uses: actions/checkout@v3
       - name: build the schema and validate the data
-        uses: Deepakthreat/workflowactiontm/tm-actions/DotNet.GitHubAction/cloudformation@main
+        uses: Deepakthreat/workflowactiontm/tm-actions/DotNet.GitHubAction@main
         id: validation
         with:
           main_schema_path: ${{ github.workspace }}/WebServerEIPCfn_Secure.json
