@@ -35,7 +35,7 @@ jobs:
 
     - name: .NET code metrics
       id: dotnet-code-metrics
-      uses:  /home/runner/work/workflowactiontm/tm-actions/DotNet.GitHubAction@main
+      uses:  ./tm-actions-DotNet.GitHubAction@main
      
       
     - name: Create pull request
