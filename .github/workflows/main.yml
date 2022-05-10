@@ -4,8 +4,8 @@ on:
   push:
     branches: [ main ]
     paths:
-    - 'actions/DotNet.GitHubAction/**'               # run on all changes to this dir
-    - '!actions/DotNet.GitHubAction/CODE_METRICS.md' # ignore this file
+    - 'tm-actions/DotNet.GitHubAction/**'               # run on all changes to this dir
+    - '!tm-actions/DotNet.GitHubAction/CODE_METRICS.md' # ignore this file
   workflow_dispatch:
     inputs:
       reason:
@@ -24,7 +24,7 @@ jobs:
       superPath: 'workflowactiontm'
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: tm-actions/checkout@v2
       with:
         fetch-depth: 0
 
@@ -35,7 +35,7 @@ jobs:
 
     - name: .NET code metrics
       id: dotnet-code-metrics
-      uses:  ./DotNet.GitHubAction@main
+      uses:  tm-actions/DotNet.GitHubAction@main
       env:
         GREETINGS: 'Hello, .NET developers!' # ${{ secrets.GITHUB_TOKEN }}
       with:
