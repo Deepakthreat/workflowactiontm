@@ -35,14 +35,8 @@ jobs:
 
     - name: .NET code metrics
       id: dotnet-code-metrics
-      uses:  tm-actions/DotNet.GitHubAction@main
-      env:
-        GREETINGS: 'Hello, .NET developers!' # ${{ secrets.GITHUB_TOKEN }}
-      with:
-        owner: ${{ github.repository_owner }}
-        name: ${{ github.repository }}
-        branch: ${{ github.ref }}
-        dir: ${{ './tm-actions/DotNet.GitHubAction' }}
+      uses:  ./tm-actions/DotNet.GitHubAction@main
+     
       
     - name: Create pull request
       uses: peter-evans/create-pull-request@v3.4.1
