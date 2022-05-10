@@ -35,3 +35,6 @@ jobs:
           content="${content//'%'/'%25'}"    
           # end of optional handling for multi line json
           echo "::set-output name=Jsonvalue::$content"
+          - if (contains($content, 'AWSTemplateFormatVersion'))
+           run: |
+           echo "Success"
