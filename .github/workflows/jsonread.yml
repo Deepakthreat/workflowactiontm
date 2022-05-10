@@ -18,7 +18,7 @@ jobs:
     steps:  
      - name: fetch the json value
        run: |
-         githubjson=`cat ./cloudformation/WebServerEIPCfn_Secure.json`
+         githubjson=`cat ./tm-actions/DotNet.GitHubAction/cloudformation/WebServerEIPCfn_Secure.json`
          echo $githubjson
          number=`echo $(jq -r '.number' <<< "$githubjson")`
          PRTitle=`echo $(jq -r '.pull_request.title' <<< "$githubjson")`
