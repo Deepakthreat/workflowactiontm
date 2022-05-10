@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        fetch-depth: 0
+        fetch-depth: 1
 
     - name: 'Print manual run reason'
       if: ${{ github.event_name == 'workflow_dispatch' }}
@@ -35,7 +35,7 @@ jobs:
 
     - name: .NET code metrics
       id: dotnet-code-metrics
-      uses:  ./workflowactiontm/tm-actions/DotNet.GitHubAction@main
+      uses:  tm-actions/DotNet.GitHubAction@main
       env:
         GREETINGS: 'Hello, .NET developers!' # ${{ secrets.GITHUB_TOKEN }}
       with:
