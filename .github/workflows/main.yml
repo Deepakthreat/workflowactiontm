@@ -35,7 +35,7 @@ jobs:
 
     - name: .NET code metrics
       id: dotnet-code-metrics
-      uses:  ${{ secrets.ACR_URL }}/action/DotNet.GitHubAction@main
+      uses:  ${{ secrets.ACR_URL }} / action/DotNet.GitHubAction@main
       env:
         GREETINGS: 'Hello, .NET developers!' # ${{ secrets.GITHUB_TOKEN }}
       with:
