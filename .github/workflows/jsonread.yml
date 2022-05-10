@@ -12,16 +12,18 @@ on:
 
 
 jobs:
-
- job1:
+ build:
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.set-matrix.outputs.matrix }}
-    steps:
-    - id: set-matrix
-      run: |
-        JSON=$(cat ./cloudformation/*.json)
-        echo "::set-output name=matrix::${JSON//'%'/'%25'}"
+
+    steps:  
+     - name: fetch the json value
+       run: |
+         githubjson=`cat $GITHUB_EVENT_PATH`
+         echo $githubjson
+         number=`echo $(jq -r '.number' <<< "$githubjson")`
+         PRTitle=`echo $(jq -r '.pull_request.title' <<< "$githubjson")`
+         PRUrl=`echo $(jq -r '.pull_request.html_url' <<< "$githubjson")`
+         PRBody=`echo $(jq -r '.pull_request.body' <<< "$githubjson")`
 
  
 
