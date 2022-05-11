@@ -32,7 +32,7 @@ jobs:
         id: finding-files
         run: |
           echo "::set-output name=FILELIST::$(find . -name '*.json' -print)"
-          
+          echo "${{ steps.finding-files.outputs.FILELIST }}" 
       - name: Processing my found files from output        
         run: |
           IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
@@ -40,7 +40,7 @@ jobs:
            file_path=$(dirname "${i}")
            file_name=$(basename "${i}")
            echo "${{ steps.finding-files.outputs.FILELIST }}"       
-           done
+           
            
       - id: set_var
         run: |
@@ -55,3 +55,4 @@ jobs:
       - name: Get data
         run: |
           echo "${{fromJson(steps.set_var.outputs.Jsonvalue).AWSTemplateFormatVersion}}"  
+          done
