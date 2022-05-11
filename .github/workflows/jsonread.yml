@@ -51,6 +51,6 @@ jobs:
           echo "::set-output name=Jsonvalue::$content"
       - name: "Set data"
         run: |
-          echo "${{fromJson(steps.set_var.outputs.Jsonvalue).AWSTemplateFormatVersion}}"
+          echo "${{fromJson(steps.set_var.outputs.Jsonvalue)}}"
           done
       
