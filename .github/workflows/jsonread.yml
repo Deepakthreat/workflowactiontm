@@ -37,8 +37,7 @@ jobs:
         run: |
           IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
           for i in "${myarray[@]}"; do
-            file_path=$(dirname "${i}")
-            file_name=$(basename "${i}")
+            file_path=$(dirname "${i}")          
           echo file_path 
       - id: set_var
         run: |
