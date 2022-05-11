@@ -39,10 +39,10 @@ jobs:
           for i in "${myarray[@]}"; do
             file_path=$(dirname "${i}")
             file_name=$(basename "${i}")
-            
+          echo file_path 
       - id: set_var
         run: |
-          content= cat file_path
+          content= `cat file_path`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
