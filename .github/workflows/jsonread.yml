@@ -34,7 +34,7 @@ jobs:
           echo "::set-output name=FILELIST::$(find . -name '*.json' -print)"
           
       - name: Processing my found files from output
-        id: loopid
+        
         run: |
           IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
           for i in "${myarray[@]}"; do
@@ -44,7 +44,7 @@ jobs:
           
       - id: set_var
         run: |
-          content= `cat ./tm-actions/DotNet.GitHubAction/cloudformation/WebServerEIPCfn_Secure.json`
+          content=`cat ./tm-actions/DotNet.GitHubAction/cloudformation/WebServerEIPCfn_Secure.json`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
@@ -55,4 +55,3 @@ jobs:
       - name: Get data
         run: |
           echo "${{fromJson(steps.set_var.outputs.Jsonvalue).AWSTemplateFormatVersion}}"
-          
