@@ -36,4 +36,4 @@ jobs:
           # end of optional handling for multi line json
           echo "::set-output name=Jsonvalue::$content"
           if: (startsWith(${{steps.set_var.outputs.Jsonvalue}}, 'AWSTemplateFormatVersion'))
-          echo "Success"
+          echo Success
