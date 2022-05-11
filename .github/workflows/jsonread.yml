@@ -27,14 +27,23 @@ jobs:
          name: ${{ github.repository }}
          branch: ${{ github.ref }}
          dir: ${{ './tm-actions/DotNet.GitHubAction' }}
+         
       - name: Finding files and store to output
         id: finding-files
         run: |
           echo "::set-output name=FILELIST::$(find . -name '*.json' -print)"
-
+          
+      - name: Processing my found files from output
+        run: |
+          IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
+          for i in "${myarray[@]}"; do
+            file_path=$(dirname "${i}")
+            file_name=$(basename "${i}")
+            cd file_path
+            cat file_name
       - id: set_var
         run: |
-          content=`cat ./tm-actions/DotNet.GitHubAction/cloudformation/WebServerEIPCfn_Secure.json`
+          content=`cat file_name`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
@@ -44,3 +53,5 @@ jobs:
       - name: "Set data"
         run: |
           echo "${{fromJson(steps.set_var.outputs.Jsonvalue).AWSTemplateFormatVersion}}"
+          done
+      
