@@ -35,5 +35,8 @@ jobs:
           content="${content//'%'/'%25'}"    
           # end of optional handling for multi line json
           echo "::set-output name=Jsonvalue::$content"
-          if: (startsWith(${{steps.set_var.outputs.Jsonvalue}}, 'AWSTemplateFormatVersion'))
-          run: | echo "${{steps.set_var.outputs.Jsonvalue}}"
+      - name: "Set data"
+        run: |
+          env_data=${{ fromJson(steps.set_var.outputs.Jsonvalue).[0].AWSTemplateFormatVersion }}
+          echo "env_data=$env_data"
+          echo $env_data
