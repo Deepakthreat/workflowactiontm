@@ -33,16 +33,14 @@ jobs:
         run: |
           echo "::set-output name=FILELIST::$(find . -name '*.json' -print)"
           
-      - name: Processing my found files from output
-        
+      - name: Processing my found files from output        
         run: |
           IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
           for i in "${myarray[@]}"; do
            file_path=$(dirname "${i}")
            file_name=$(basename "${i}")
-          run: |
-           echo file_path
-           echo "${1}"
+          
+          
           done
        
       - name: read json file 
