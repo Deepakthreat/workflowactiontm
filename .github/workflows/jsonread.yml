@@ -39,7 +39,7 @@ jobs:
           for i in "${myarray[@]}"; do
            file_path=$(dirname "${i}")
            file_name=$(basename "${i}")
-           echo "${i}"       
+           echo "${{ steps.finding-files.outputs.FILELIST }}"       
            done
            
       - id: set_var
