@@ -38,18 +38,20 @@ jobs:
         run: |
           IFS="," read -a myarray <<< ${{ steps.finding-files.outputs.FILELIST }}
           for i in "${myarray[@]}"; do
-          
+           file_path=$(dirname "${i}")
+           file_name=$(basename "${i}")
+      
       - id: set_var
         run: |
-          content= `cat ${i}`
+          content= `cat file_path/file_name`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
-          content="${content//$'\r'/'%0D'}
+          content="${content//$'\r'/'%0D'}"
           # end of optional handling for multi line json
           echo "::set-output name=Jsonvalue::$content"
       
-      - name: "Set data"
+      - name: Get data
         run: |
           echo "${{fromJson(steps.set_var.outputs.Jsonvalue).AWSTemplateFormatVersion}}"
           done
