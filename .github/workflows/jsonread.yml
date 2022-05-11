@@ -40,10 +40,11 @@ jobs:
            file_path=$(dirname "${i}")
            file_name=$(basename "${i}")
            echo "${i}"       
-       
+           done
+           
       - id: set_var
         run: |
-          content=`cat ${i}`
+          content=`cat ./tm-actions/DotNet.GitHubAction/cloudformation/iacassist_architecture_poc.json`
           # the following lines are only required for multi line json
           content="${content//'%'/'%25'}"
           content="${content//$'\n'/'%0A'}"
@@ -53,5 +54,4 @@ jobs:
       
       - name: Get data
         run: |
-          echo "${{fromJson(steps.set_var.outputs.Jsonvalue).AWSTemplateFormatVersion}}"          
-          done
+          echo "${{fromJson(steps.set_var.outputs.Jsonvalue).AWSTemplateFormatVersion}}"  
