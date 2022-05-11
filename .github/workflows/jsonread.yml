@@ -40,6 +40,7 @@ jobs:
           for i in "${myarray[@]}"; do
            file_path=$(dirname "${i}")
            file_name=$(basename "${i}")
+          run: |
            echo file_path
            echo "${1}"
           done
