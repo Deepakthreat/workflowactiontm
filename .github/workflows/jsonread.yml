@@ -39,11 +39,11 @@ jobs:
           for i in "${myarray[@]}"; do
            file_path=$(dirname "${i}")
            file_name=$(basename "${i}")
-          
+           echo "${i}"
           
           done
        
-      - name: read json file 
+       
       - id: set_var
         run: |
           content=`cat ./tm-actions/DotNet.GitHubAction/cloudformation/WebServerEIPCfn_Secure.json`
